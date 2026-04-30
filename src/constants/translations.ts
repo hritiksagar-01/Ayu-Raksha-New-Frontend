@@ -13,7 +13,7 @@ export const translations = {
 
   // Hero Section
   welcomeText: {
-    English: 'Welcomeeeeeeeeee to Ayu Rakshaa',
+    English: 'Welcome to Ayu Rakshaa',
     Hindi: 'आयु रक्षा में आपका स्वागत है',
   },
   tagline: {
