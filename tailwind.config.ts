@@ -2,7 +2,7 @@
 import type { Config } from "tailwindcss";
 
 const config: Config = {
-  darkMode: "class", // ✅ Changed from ["class"] to "class"
+  darkMode: "class",
   content: [
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
@@ -11,7 +11,57 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        background: "hsl(var(--background))",
+        // === Stitch Material Design 3 Palette ===
+        "on-tertiary": "#ffffff",
+        "inverse-surface": "#2f312f",
+        "secondary-fixed": "#efe0cd",
+        "surface-variant": "#e2e3e0",
+        "surface-container-low": "#f3f4f1",
+        "on-background": "#1a1c1b",
+        "surface-container-high": "#e8e8e6",
+        "inverse-primary": "#a5d0bf",
+        "on-secondary": "#ffffff",
+        "error-container": "#ffdad6",
+        background: "#f9f9f7",
+        "on-tertiary-fixed": "#32120e",
+        "on-primary-fixed": "#002118",
+        "on-surface": "#1a1c1b",
+        error: "#ba1a1a",
+        "surface-dim": "#dadad8",
+        "surface-container-highest": "#e2e3e0",
+        primary: "#1c4438",
+        "on-error": "#ffffff",
+        secondary: "#675d4e",
+        "on-error-container": "#93000a",
+        "on-secondary-container": "#6d6354",
+        "on-surface-variant": "#414845",
+        surface: "#f9f9f7",
+        "tertiary-fixed": "#ffdad5",
+        "on-primary-container": "#a7d3c2",
+        "outline-variant": "#c0c8c3",
+        "on-secondary-fixed-variant": "#4f4538",
+        "surface-container-lowest": "#ffffff",
+        "on-secondary-fixed": "#221a0f",
+        "surface-container": "#eeeeec",
+        "secondary-container": "#efe0cd",
+        "tertiary-fixed-dim": "#f3b8b0",
+        "on-tertiary-container": "#f6bbb3",
+        "primary-fixed": "#c0ecdb",
+        "surface-tint": "#3e6659",
+        "tertiary-container": "#754943",
+        "primary-fixed-dim": "#a5d0bf",
+        "surface-bright": "#f9f9f7",
+        "primary-container": "#345c4f",
+        "inverse-on-surface": "#f0f1ee",
+        outline: "#717975",
+        "on-primary-fixed-variant": "#264e42",
+        "on-tertiary-fixed-variant": "#653c36",
+        "on-primary": "#ffffff",
+        tertiary: "#5a332d",
+        "secondary-fixed-dim": "#d2c4b2",
+        // Warm gold accent
+        "warm-gold": "#D4A574",
+        // Legacy shadcn compatibility
         foreground: "hsl(var(--foreground))",
         card: {
           DEFAULT: "hsl(var(--card))",
@@ -20,14 +70,6 @@ const config: Config = {
         popover: {
           DEFAULT: "hsl(var(--popover))",
           foreground: "hsl(var(--popover-foreground))",
-        },
-        primary: {
-          DEFAULT: "hsl(var(--primary))",
-          foreground: "hsl(var(--primary-foreground))",
-        },
-        secondary: {
-          DEFAULT: "hsl(var(--secondary))",
-          foreground: "hsl(var(--secondary-foreground))",
         },
         muted: {
           DEFAULT: "hsl(var(--muted))",
@@ -53,9 +95,51 @@ const config: Config = {
         },
       },
       borderRadius: {
-        lg: "var(--radius)",
-        md: "calc(var(--radius) - 2px)",
-        sm: "calc(var(--radius) - 4px)",
+        DEFAULT: "0.25rem",
+        lg: "0.5rem",
+        xl: "0.75rem",
+        "2xl": "1rem",
+        full: "9999px",
+      },
+      spacing: {
+        xs: "4px",
+        sm: "8px",
+        md: "12px",
+        lg: "16px",
+        xl: "24px",
+        "2xl": "32px",
+        "3xl": "48px",
+        "4xl": "64px",
+        "5xl": "96px",
+        base: "4px",
+      },
+      fontFamily: {
+        newsreader: ["var(--font-newsreader)", "serif"],
+        inter: ["var(--font-inter)", "sans-serif"],
+        h1: ["var(--font-newsreader)", "serif"],
+        h2: ["var(--font-newsreader)", "serif"],
+        h3: ["var(--font-newsreader)", "serif"],
+        "body-lg": ["var(--font-inter)", "sans-serif"],
+        "body-md": ["var(--font-inter)", "sans-serif"],
+        "body-sm": ["var(--font-inter)", "sans-serif"],
+        "label-bold": ["var(--font-inter)", "sans-serif"],
+        button: ["var(--font-inter)", "sans-serif"],
+      },
+      fontSize: {
+        h1: ["48px", { lineHeight: "1.2", fontWeight: "600" }],
+        h2: ["36px", { lineHeight: "1.3", fontWeight: "600" }],
+        h3: ["28px", { lineHeight: "1.4", fontWeight: "500" }],
+        "body-lg": ["18px", { lineHeight: "1.6", fontWeight: "400" }],
+        "body-md": ["16px", { lineHeight: "1.5", fontWeight: "400" }],
+        "body-sm": ["14px", { lineHeight: "1.5", fontWeight: "400" }],
+        "label-bold": [
+          "12px",
+          { lineHeight: "1", letterSpacing: "0.05em", fontWeight: "600" },
+        ],
+        button: [
+          "16px",
+          { lineHeight: "1", letterSpacing: "0.02em", fontWeight: "500" },
+        ],
       },
       keyframes: {
         bounce: {
@@ -76,11 +160,21 @@ const config: Config = {
           from: { height: "var(--radix-accordion-content-height)" },
           to: { height: "0" },
         },
+        "fade-in": {
+          from: { opacity: "0" },
+          to: { opacity: "1" },
+        },
+        "slide-up": {
+          from: { opacity: "0", transform: "translateY(10px)" },
+          to: { opacity: "1", transform: "translateY(0)" },
+        },
       },
       animation: {
         bounce: "bounce 1s infinite",
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+        "fade-in": "fade-in 0.2s ease-out",
+        "slide-up": "slide-up 0.3s ease-out",
       },
     },
   },

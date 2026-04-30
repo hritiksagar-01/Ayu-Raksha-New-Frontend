@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Medical Reports - Ayu-Raksha</title>
+<!-- Google Fonts: Newsreader & Inter -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Newsreader:opsz,wght@6..72,500;6..72,600&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Configuration -->
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-tertiary": "#ffffff",
+                      "inverse-surface": "#2f312f",
+                      "secondary-fixed": "#efe0cd",
+                      "surface-variant": "#e2e3e0",
+                      "surface-container-low": "#f3f4f1",
+                      "on-background": "#1a1c1b",
+                      "surface-container-high": "#e8e8e6",
+                      "inverse-primary": "#a5d0bf",
+                      "on-secondary": "#ffffff",
+                      "error-container": "#ffdad6",
+                      "background": "#f9f9f7",
+                      "on-tertiary-fixed": "#32120e",
+                      "on-primary-fixed": "#002118",
+                      "on-surface": "#1a1c1b",
+                      "error": "#ba1a1a",
+                      "surface-dim": "#dadad8",
+                      "surface-container-highest": "#e2e3e0",
+                      "primary": "#1c4438",
+                      "on-error": "#ffffff",
+                      "secondary": "#675d4e",
+                      "on-error-container": "#93000a",
+                      "on-secondary-container": "#6d6354",
+                      "on-surface-variant": "#414845",
+                      "surface": "#f9f9f7",
+                      "tertiary-fixed": "#ffdad5",
+                      "on-primary-container": "#a7d3c2",
+                      "outline-variant": "#c0c8c3",
+                      "on-secondary-fixed-variant": "#4f4538",
+                      "surface-container-lowest": "#ffffff",
+                      "on-secondary-fixed": "#221a0f",
+                      "surface-container": "#eeeeec",
+                      "secondary-container": "#efe0cd",
+                      "tertiary-fixed-dim": "#f3b8b0",
+                      "on-tertiary-container": "#f6bbb3",
+                      "primary-fixed": "#c0ecdb",
+                      "surface-tint": "#3e6659",
+                      "tertiary-container": "#754943",
+                      "primary-fixed-dim": "#a5d0bf",
+                      "surface-bright": "#f9f9f7",
+                      "primary-container": "#345c4f",
+                      "inverse-on-surface": "#f0f1ee",
+                      "outline": "#717975",
+                      "on-primary-fixed-variant": "#264e42",
+                      "on-tertiary-fixed-variant": "#653c36",
+                      "on-primary": "#ffffff",
+                      "tertiary": "#5a332d",
+                      "secondary-fixed-dim": "#d2c4b2"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "xl": "24px",
+                      "xs": "4px",
+                      "4xl": "64px",
+                      "5xl": "96px",
+                      "lg": "16px",
+                      "3xl": "48px",
+                      "2xl": "32px",
+                      "base": "4px",
+                      "md": "12px",
+                      "sm": "8px"
+              },
+              "fontFamily": {
+                      "h2": [
+                              "Newsreader"
+                      ],
+                      "label-bold": [
+                              "Inter"
+                      ],
+                      "button": [
+                              "Inter"
+                      ],
+                      "body-sm": [
+                              "Inter"
+                      ],
+                      "h3": [
+                              "Newsreader"
+                      ],
+                      "h1": [
+                              "Newsreader"
+                      ],
+                      "body-lg": [
+                              "Inter"
+                      ],
+                      "body-md": [
+                              "Inter"
+                      ]
+              },
+              "fontSize": {
+                      "h2": [
+                              "36px",
+                              {
+                                      "lineHeight": "1.3",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "label-bold": [
+                              "12px",
+                              {
+                                      "lineHeight": "1",
+                                      "letterSpacing": "0.05em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "button": [
+                              "16px",
+                              {
+                                      "lineHeight": "1",
+                                      "letterSpacing": "0.02em",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "body-sm": [
+                              "14px",
+                              {
+                                      "lineHeight": "1.5",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "h3": [
+                              "28px",
+                              {
+                                      "lineHeight": "1.4",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "h1": [
+                              "48px",
+                              {
+                                      "lineHeight": "1.2",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "body-lg": [
+                              "18px",
+                              {
+                                      "lineHeight": "1.6",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "body-md": [
+                              "16px",
+                              {
+                                      "lineHeight": "1.5",
+                                      "fontWeight": "400"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+      </script>
+</head>
+<body class="bg-background text-on-background font-body-md text-body-md antialiased flex h-screen overflow-hidden">
+<!-- Shared Component: SideNavBar -->
+<nav class="h-screen w-64 border-r border-outline-variant shadow-none fixed left-0 top-0 z-40 bg-surface-container-lowest flex flex-col py-8 gap-4 hidden md:flex">
+<!-- Header -->
+<div class="px-lg flex items-center gap-md mb-2xl">
+<img alt="Healthcare Professional Avatar" class="w-10 h-10 rounded-full object-cover border border-outline-variant shadow-sm" data-alt="A professional, brightly lit headshot of a female healthcare professional wearing a clean white lab coat and a subtle green stethoscope. The background is a soft, out-of-focus modern clinic with natural light streaming through a window, creating a warm, trustworthy, and approachable mood. The color palette emphasizes clean whites, soft grays, and the clinic's signature deep forest green accents, reflecting a premium medical environment." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDEjGVnHHZWEE4FA5EdCtAgIujPACGIMzA-9D3P-ZcVUKTf5HN-lN4geUeuBRMODGVDuqc4b4SOFNTvGc46oqZ_qOrGjbio_Y6xAEzvswt4NYmB3kftzqdNbO_MS68byBk4wB24fbmiHvPMJei2NjHnRbEWWfwVKnpadgwQwHTeW8f8Xw2xrGI20L_N1KD-NAinPdgiFKpJYF0ux8rfJ8XHjPXnkN0IMplSgKW-5Pcx5Nkq7KXQ__a_NwO5EtGgQPgAOD6UBp0K7Q"/>
+<div>
+<h2 class="font-h3 text-[18px] leading-tight font-medium text-primary-container">Ayu-Raksha Portal</h2>
+<p class="font-label-bold text-[10px] text-primary flex items-center gap-xs mt-xs">
+<span class="material-symbols-outlined text-[12px]" style="font-variation-settings: 'FILL' 1;">verified</span> Verified Session
+                </p>
+</div>
+</div>
+<!-- Navigation Links -->
+<div class="flex-1 flex flex-col gap-sm px-sm">
+<a class="flex items-center gap-md px-lg py-md rounded-lg font-body-sm text-body-sm text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors duration-200" href="#">
+<span class="material-symbols-outlined text-[20px]">dashboard</span>
+                Dashboard
+            </a>
+<a class="flex items-center gap-md px-lg py-md rounded-lg font-body-sm text-body-sm text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors duration-200" href="#">
+<span class="material-symbols-outlined text-[20px]">calendar_today</span>
+                Appointments
+            </a>
+<!-- Active State -->
+<a class="flex items-center gap-md px-lg py-md rounded-lg font-body-sm text-body-sm bg-primary-container/10 text-primary-container border-l-4 border-primary-container transition-all" href="#">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">description</span>
+                Medical Reports
+            </a>
+<a class="flex items-center gap-md px-lg py-md rounded-lg font-body-sm text-body-sm text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors duration-200" href="#">
+<span class="material-symbols-outlined text-[20px]">timeline</span>
+                Health Timeline
+            </a>
+<a class="flex items-center gap-md px-lg py-md rounded-lg font-body-sm text-body-sm text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors duration-200" href="#">
+<span class="material-symbols-outlined text-[20px]">smart_toy</span>
+                AI Assistant
+            </a>
+</div>
+<!-- CTA & Footer Actions -->
+<div class="px-lg mt-auto flex flex-col gap-md">
+<button class="w-full py-md px-md rounded-lg font-button text-button bg-error-container text-on-error-container flex items-center justify-center gap-sm hover:bg-error hover:text-on-error transition-colors shadow-sm">
+<span class="material-symbols-outlined text-[18px]">emergency</span>
+                Emergency Support
+            </button>
+<div class="border-t border-outline-variant pt-md flex flex-col gap-sm">
+<a class="flex items-center gap-md px-md py-sm rounded-lg font-body-sm text-body-sm text-on-surface-variant hover:bg-surface-container transition-colors" href="#">
+<span class="material-symbols-outlined text-[18px]">settings</span>
+                    Settings
+                </a>
+<a class="flex items-center gap-md px-md py-sm rounded-lg font-body-sm text-body-sm text-on-surface-variant hover:bg-surface-container transition-colors" href="#">
+<span class="material-symbols-outlined text-[18px]">logout</span>
+                    Logout
+                </a>
+</div>
+</div>
+</nav>
+<!-- Main Layout Wrapper -->
+<div class="flex-1 flex flex-col md:ml-64 relative w-full">
+<!-- Shared Component: TopNavBar -->
+<header class="sticky top-0 w-full z-50 bg-surface/90 backdrop-blur-md border-b border-outline-variant shadow-[0px_2px_8px_rgba(52,92,79,0.03)] h-16 px-xl flex justify-between items-center transition-all">
+<!-- Brand Mobile (Hidden on Desktop) -->
+<div class="md:hidden flex items-center gap-sm">
+<span class="font-h2 text-[24px] font-bold tracking-tight text-primary-container">Ayu-Raksha</span>
+</div>
+<!-- Global Navigation (Centered on Desktop) -->
+<nav class="hidden md:flex flex-1 justify-center items-center gap-xl">
+<a class="font-body-md text-body-md font-medium text-on-surface-variant hover:text-primary-container transition-colors duration-200 py-md" href="#">Services</a>
+<!-- Active Global Nav -->
+<a class="font-body-md text-body-md font-medium text-primary-container border-b-2 border-primary-container py-md" href="#">Portals</a>
+<a class="font-body-md text-body-md font-medium text-on-surface-variant hover:text-primary-container transition-colors duration-200 py-md" href="#">About</a>
+<a class="font-body-md text-body-md font-medium text-on-surface-variant hover:text-primary-container transition-colors duration-200 py-md" href="#">Support</a>
+</nav>
+<!-- Trailing Actions -->
+<div class="flex items-center gap-lg ml-auto">
+<button class="text-on-surface-variant hover:text-primary-container transition-colors w-8 h-8 flex items-center justify-center rounded-full hover:bg-surface-container">
+<span class="material-symbols-outlined text-[20px]">language</span>
+</button>
+<button class="text-on-surface-variant hover:text-primary-container transition-colors w-8 h-8 flex items-center justify-center rounded-full hover:bg-surface-container relative">
+<span class="material-symbols-outlined text-[20px]">notifications</span>
+<span class="absolute top-1 right-1 w-2 h-2 bg-error rounded-full"></span>
+</button>
+<div class="h-6 w-px bg-outline-variant mx-xs hidden md:block"></div>
+<button class="font-button text-button font-medium text-primary-container hover:bg-primary-container/10 px-md py-sm rounded-lg transition-colors hidden md:block">
+                    Login
+                </button>
+<img alt="User profile avatar" class="w-8 h-8 rounded-full object-cover border border-outline-variant cursor-pointer ml-sm" data-alt="A close-up, friendly portrait of a male patient in his late 30s with a relaxed, confident smile. He is wearing a simple, high-quality casual shirt in a soft cream color. The lighting is natural and flattering, creating a bright, modern aesthetic. The background is completely minimalist and abstract, featuring a subtle, luminous gradient of very light sage green and white to maintain visual harmony with the healthcare portal's organic and reassuring brand identity." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCq7xQwVltcrhMdCtqNVXylOsiR2x2HbXr18q2dbtxVVEHkNruz8Pp-wmvsy-pTN4ZA4Kc-TWSNFrxL--0T0Sy3yLfHTvsfWVas1oV_3fvKJwCpfn5ssgAsO3NOYIn82mKbKwzJMmk6oAYAeG3gjSiMbWPbopSMsyL6S55pRNWEx4WGxA7sxakPeibjMy6dHWv8X4Vr0ox4bQ9quwdF183msFllsOQsf-yiZUHmHc1V0CoCd1MgTZVBLQG3ESlTWZPY3J7Ar5sXAg"/>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-1 overflow-y-auto p-xl lg:p-2xl w-full max-w-[1280px] mx-auto flex flex-col gap-2xl">
+<!-- Page Header Section -->
+<div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-lg">
+<div>
+<h1 class="font-h1 text-[36px] md:text-h1 text-on-background tracking-tight">Medical Reports</h1>
+<p class="font-body-md text-body-md text-on-surface-variant mt-xs">Manage and securely access your laboratory and clinical documents.</p>
+</div>
+<button class="font-button text-button bg-primary text-on-primary px-xl py-md rounded-lg hover:bg-primary-container active:scale-[0.98] transition-all shadow-[0px_4px_12px_rgba(28,68,56,0.15)] flex items-center gap-sm shrink-0">
+<span class="material-symbols-outlined text-[20px]">upload</span> 
+                    Upload New Report
+                </button>
+</div>
+<!-- High-End Bento Stats Row -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-lg">
+<!-- Stat Card 1 -->
+<div class="bg-surface-container-lowest rounded-xl p-lg border border-outline-variant shadow-[0px_4px_12px_rgba(52,92,79,0.03)] flex items-center gap-md hover:-translate-y-1 transition-transform duration-300">
+<div class="w-12 h-12 rounded-full bg-primary-fixed flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[24px]">folder_open</span>
+</div>
+<div>
+<p class="font-label-bold text-label-bold text-on-surface-variant uppercase tracking-wider">Total Reports</p>
+<p class="font-h2 text-[28px] text-on-background mt-xs">24</p>
+</div>
+</div>
+<!-- Stat Card 2 -->
+<div class="bg-secondary-container/30 rounded-xl p-lg border border-outline-variant shadow-[0px_4px_12px_rgba(52,92,79,0.03)] flex items-center gap-md hover:-translate-y-1 transition-transform duration-300">
+<div class="w-12 h-12 rounded-full bg-surface-container-lowest flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined text-[24px]">update</span>
+</div>
+<div>
+<p class="font-label-bold text-label-bold text-on-surface-variant uppercase tracking-wider">Recent (30 Days)</p>
+<p class="font-h2 text-[28px] text-on-background mt-xs">3</p>
+</div>
+</div>
+<!-- Stat Card 3 -->
+<div class="bg-surface-container-lowest rounded-xl p-lg border border-outline-variant shadow-[0px_4px_12px_rgba(52,92,79,0.03)] flex items-center gap-md hover:-translate-y-1 transition-transform duration-300">
+<div class="w-12 h-12 rounded-full bg-error-container/50 flex items-center justify-center text-on-error-container">
+<span class="material-symbols-outlined text-[24px]">pending_actions</span>
+</div>
+<div>
+<p class="font-label-bold text-label-bold text-on-surface-variant uppercase tracking-wider">Pending Review</p>
+<p class="font-h2 text-[28px] text-on-background mt-xs">1</p>
+</div>
+</div>
+</div>
+<!-- Main Data Table Module -->
+<div class="bg-surface-container-lowest rounded-xl border border-outline-variant shadow-[0px_8px_24px_rgba(52,92,79,0.04)] overflow-hidden flex flex-col">
+<!-- Toolbar -->
+<div class="p-lg border-b border-outline-variant flex flex-col sm:flex-row justify-between items-center gap-md bg-surface">
+<!-- Search -->
+<div class="relative w-full sm:w-72">
+<span class="material-symbols-outlined absolute left-sm top-1/2 -translate-y-1/2 text-on-surface-variant text-[20px]">search</span>
+<input class="w-full pl-xl pr-md py-sm bg-surface-container-lowest border border-outline-variant rounded-lg font-body-sm text-body-sm text-on-surface focus:outline-none focus:border-primary-fixed-dim focus:ring-1 focus:ring-primary-fixed-dim transition-all" placeholder="Search reports..." type="text"/>
+</div>
+<!-- Filters -->
+<div class="flex items-center gap-sm w-full sm:w-auto">
+<button class="flex-1 sm:flex-none flex items-center justify-center gap-xs px-md py-sm bg-surface-container-lowest border border-outline-variant rounded-lg font-button text-[14px] text-on-surface-variant hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined text-[18px]">filter_list</span> Filter
+                        </button>
+<button class="flex-1 sm:flex-none flex items-center justify-center gap-xs px-md py-sm bg-surface-container-lowest border border-outline-variant rounded-lg font-button text-[14px] text-on-surface-variant hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined text-[18px]">sort</span> Sort
+                        </button>
+</div>
+</div>
+<!-- Table Content -->
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container text-on-surface-variant font-label-bold text-label-bold uppercase tracking-wider">
+<th class="p-lg font-semibold">Date</th>
+<th class="p-lg font-semibold">Report Type</th>
+<th class="p-lg font-semibold">Doctor / Facility</th>
+<th class="p-lg font-semibold">Status</th>
+<th class="p-lg font-semibold text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="font-body-sm text-body-sm text-on-surface">
+<!-- Row 1 -->
+<tr class="border-b border-surface-container-high hover:bg-surface transition-colors duration-150 group">
+<td class="p-lg whitespace-nowrap">
+<div class="flex items-center gap-sm">
+<div class="w-8 h-8 rounded bg-primary/5 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[18px]">calendar_month</span>
+</div>
+<div>
+<p class="font-medium">Oct 24, 2023</p>
+<p class="text-[12px] text-on-surface-variant">09:30 AM</p>
+</div>
+</div>
+</td>
+<td class="p-lg">
+<p class="font-medium text-on-background">Complete Blood Count (CBC)</p>
+<p class="text-[12px] text-on-surface-variant">Routine Checkup</p>
+</td>
+<td class="p-lg">
+<div class="flex items-center gap-sm">
+<div class="w-6 h-6 rounded-full bg-secondary-container flex items-center justify-center text-secondary font-medium text-[10px]">AS</div>
+<span>Dr. Amelia Sharma</span>
+</div>
+</td>
+<td class="p-lg">
+<span class="inline-flex items-center gap-xs px-sm py-xs rounded-md bg-primary-fixed-dim/20 text-primary-container font-label-bold text-[11px] uppercase tracking-wide">
+<span class="w-1.5 h-1.5 rounded-full bg-primary-container"></span> Ready
+                                    </span>
+</td>
+<td class="p-lg text-right whitespace-nowrap">
+<div class="flex items-center justify-end gap-sm opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+<button class="p-sm text-on-surface-variant hover:text-primary-container hover:bg-primary-fixed/30 rounded-full transition-colors tooltip-trigger" title="View Details">
+<span class="material-symbols-outlined text-[20px]">visibility</span>
+</button>
+<button class="p-sm text-on-surface-variant hover:text-primary-container hover:bg-primary-fixed/30 rounded-full transition-colors tooltip-trigger" title="Download PDF">
+<span class="material-symbols-outlined text-[20px]">download</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="border-b border-surface-container-high hover:bg-surface transition-colors duration-150 group bg-surface-container-lowest">
+<td class="p-lg whitespace-nowrap">
+<div class="flex items-center gap-sm">
+<div class="w-8 h-8 rounded bg-primary/5 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[18px]">calendar_month</span>
+</div>
+<div>
+<p class="font-medium">Sep 12, 2023</p>
+<p class="text-[12px] text-on-surface-variant">14:15 PM</p>
+</div>
+</div>
+</td>
+<td class="p-lg">
+<p class="font-medium text-on-background">MRI Scan - Lumbar Spine</p>
+<p class="text-[12px] text-on-surface-variant">Imaging Center</p>
+</td>
+<td class="p-lg">
+<div class="flex items-center gap-sm">
+<div class="w-6 h-6 rounded-full bg-tertiary-container/20 flex items-center justify-center text-tertiary font-medium text-[10px]">RK</div>
+<span>Dr. Rajiv Kapoor</span>
+</div>
+</td>
+<td class="p-lg">
+<span class="inline-flex items-center gap-xs px-sm py-xs rounded-md bg-secondary-container text-on-secondary-container font-label-bold text-[11px] uppercase tracking-wide">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span> Discussed
+                                    </span>
+</td>
+<td class="p-lg text-right whitespace-nowrap">
+<div class="flex items-center justify-end gap-sm opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+<button class="p-sm text-on-surface-variant hover:text-primary-container hover:bg-primary-fixed/30 rounded-full transition-colors tooltip-trigger" title="View Details">
+<span class="material-symbols-outlined text-[20px]">visibility</span>
+</button>
+<button class="p-sm text-on-surface-variant hover:text-primary-container hover:bg-primary-fixed/30 rounded-full transition-colors tooltip-trigger" title="Download PDF">
+<span class="material-symbols-outlined text-[20px]">download</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="border-b border-surface-container-high hover:bg-surface transition-colors duration-150 group">
+<td class="p-lg whitespace-nowrap">
+<div class="flex items-center gap-sm">
+<div class="w-8 h-8 rounded bg-primary/5 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[18px]">calendar_month</span>
+</div>
+<div>
+<p class="font-medium">Aug 05, 2023</p>
+<p class="text-[12px] text-on-surface-variant">10:00 AM</p>
+</div>
+</div>
+</td>
+<td class="p-lg">
+<p class="font-medium text-on-background">Lipid Profile</p>
+<p class="text-[12px] text-on-surface-variant">Annual Screening</p>
+</td>
+<td class="p-lg">
+<div class="flex items-center gap-sm">
+<div class="w-6 h-6 rounded-full bg-secondary-container flex items-center justify-center text-secondary font-medium text-[10px]">AS</div>
+<span>Dr. Amelia Sharma</span>
+</div>
+</td>
+<td class="p-lg">
+<span class="inline-flex items-center gap-xs px-sm py-xs rounded-md bg-error-container/50 text-on-error-container font-label-bold text-[11px] uppercase tracking-wide">
+<span class="w-1.5 h-1.5 rounded-full bg-error"></span> Requires Action
+                                    </span>
+</td>
+<td class="p-lg text-right whitespace-nowrap">
+<div class="flex items-center justify-end gap-sm opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+<button class="p-sm text-on-surface-variant hover:text-primary-container hover:bg-primary-fixed/30 rounded-full transition-colors tooltip-trigger" title="View Details">
+<span class="material-symbols-outlined text-[20px]">visibility</span>
+</button>
+<button class="p-sm text-on-surface-variant hover:text-primary-container hover:bg-primary-fixed/30 rounded-full transition-colors tooltip-trigger" title="Download PDF">
+<span class="material-symbols-outlined text-[20px]">download</span>
+</button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Pagination / Footer -->
+<div class="p-md border-t border-outline-variant bg-surface-container-lowest flex justify-between items-center">
+<p class="font-body-sm text-[13px] text-on-surface-variant pl-sm">Showing 1 to 3 of 24 entries</p>
+<div class="flex items-center gap-xs">
+<button class="w-8 h-8 flex items-center justify-center rounded border border-outline-variant text-on-surface-variant hover:bg-surface transition-colors disabled:opacity-50" disabled="">
+<span class="material-symbols-outlined text-[18px]">chevron_left</span>
+</button>
+<button class="w-8 h-8 flex items-center justify-center rounded bg-primary-container text-on-primary font-medium text-[14px] hover:bg-primary transition-colors">1</button>
+<button class="w-8 h-8 flex items-center justify-center rounded border border-outline-variant text-on-surface-variant hover:bg-surface font-medium text-[14px] transition-colors">2</button>
+<button class="w-8 h-8 flex items-center justify-center rounded border border-outline-variant text-on-surface-variant hover:bg-surface font-medium text-[14px] transition-colors">3</button>
+<button class="w-8 h-8 flex items-center justify-center rounded border border-outline-variant text-on-surface-variant hover:bg-surface transition-colors">
+<span class="material-symbols-outlined text-[18px]">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Empty State Example (Hidden structurally, here for demonstration of the requirement) -->
+<div class="hidden bg-surface-container-lowest rounded-xl border border-outline-variant border-dashed p-4xl flex flex-col items-center justify-center text-center mt-xl">
+<div class="w-16 h-16 rounded-full bg-surface-container flex items-center justify-center text-outline mb-lg">
+<span class="material-symbols-outlined text-[32px]">folder_off</span>
+</div>
+<h3 class="font-h3 text-[22px] text-on-background font-medium mb-xs">No reports found</h3>
+<p class="font-body-md text-on-surface-variant max-w-md mx-auto mb-xl">It looks like you haven't uploaded any medical reports yet, or no recent tests have been finalized by your provider.</p>
+<button class="font-button text-button bg-secondary-container text-primary-container px-lg py-md rounded-lg hover:bg-secondary-fixed transition-colors shadow-sm flex items-center gap-sm">
+<span class="material-symbols-outlined text-[20px]">upload</span> Upload Your First Report
+                </button>
+</div>
+</main>
+</div>
+</body></html>

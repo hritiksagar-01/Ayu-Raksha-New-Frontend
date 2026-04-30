@@ -3,24 +3,19 @@
 
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-import { Search, Star, MapPin } from 'lucide-react';
-import { Card, CardContent } from '@/components/ui/card';
-import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
-import { Button } from '@/components/ui/button';
-import { Avatar, AvatarFallback } from '@/components/ui/avatar';
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from '@/components/ui/select';
+import Image from 'next/image';
 import { useStore } from '@/lib/store';
 import { translations } from '@/constants/translations';
 import { getTranslation } from '@/lib/translations';
 import { mockDoctors } from '@/lib/mockData';
 import type { Doctor } from '@/types';
+import DashboardLayout from '@/components/common/DashboardLayout';
+
+const DOCTOR_IMAGES: Record<string, string> = {
+  'Dr. Sarah Johnson': '/images/stitch/doctor-sarah.jpg',
+  'Dr. Michael Chen': '/images/stitch/doctor-michael.jpg',
+  'Dr. Emily Rodriguez': '/images/stitch/doctor-emily.jpg',
+};
 
 export default function FindDoctorsPage() {
   const router = useRouter();
@@ -29,143 +24,90 @@ export default function FindDoctorsPage() {
   const [specialty, setSpecialty] = useState('All');
   const [location, setLocation] = useState('Near Me');
   const [results, setResults] = useState<Doctor[]>(mockDoctors);
-
-  const t = (key: string, fallback?: string) =>
-    getTranslation(translations, key, selectedLanguage, fallback);
+  const t = (key: string, fallback?: string) => getTranslation(translations, key, selectedLanguage, fallback);
 
   useEffect(() => {
-    // ✅ Changed 'let' to 'const'
     const filtered = mockDoctors.filter((item) => {
-      const nameMatch = item.name.toLowerCase().includes(searchTerm.toLowerCase());
-      const specialtyMatch = item.specialty.toLowerCase().includes(searchTerm.toLowerCase());
-      const termMatch = nameMatch || specialtyMatch;
-
+      const termMatch = item.name.toLowerCase().includes(searchTerm.toLowerCase()) || item.specialty.toLowerCase().includes(searchTerm.toLowerCase());
       const specialtyFilterMatch = specialty === 'All' || item.specialty === specialty;
       const locationFilterMatch = location === 'Near Me' || item.location === location;
-
       return termMatch && specialtyFilterMatch && locationFilterMatch;
     });
-
     setResults(filtered);
   }, [searchTerm, specialty, location]);
 
-  const StarRating = ({ rating }: { rating: number }) => (
-    <div className="flex items-center">
-      {[...Array(5)].map((_, i) => (
-        <Star
-          key={i}
-          className={`h-4 w-4 ${i < Math.round(rating) ? 'text-yellow-400 fill-yellow-400' : 'text-gray-300'}`}
-        />
-      ))}
-      <span className="text-sm text-gray-600 ml-1">{rating.toFixed(1)}</span>
-    </div>
-  );
+  const specialties = ['All', 'General Physician', 'Cardiologist', 'Pediatrician', 'Dermatologist'];
+  const locations = ['Near Me', 'Mumbai', 'Delhi', 'Kochi'];
 
   return (
-    <div className="p-6 space-y-6">
+    <DashboardLayout>
+      {/* Header */}
       <div>
-        <h1 className="text-3xl font-bold text-gray-900">
-          {t('findDoctors', 'Find Doctors')}
-        </h1>
-        <p className="text-gray-600 mt-1">
-          {t('findDoctorsDescription', 'Search for doctors and hospitals near you')}
-        </p>
+        <h1 className="font-newsreader text-h2 text-on-background dark:text-surface-container-lowest">{t('findDoctors', 'Find a Doctor')}</h1>
+        <p className="font-inter text-body-md text-on-surface-variant dark:text-outline-variant mt-1">{t('findDoctorsDescription', 'Search for specialists and book appointments')}</p>
       </div>
 
       {/* Search & Filters */}
-      <Card>
-        <CardContent className="pt-6 space-y-4">
-          <div className="relative">
-            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400" />
-            <Input
-              type="text"
-              placeholder={t('searchDoctors', 'Search by name or specialty...')}
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-              className="pl-10"
-            />
+      <div className="bg-surface-container-lowest dark:bg-inverse-surface rounded-xl p-6 border border-outline-variant/20 dark:border-white/10 shadow-[0_4px_12px_rgba(52,92,79,0.05)] space-y-4">
+        <div className="relative">
+          <span className="absolute left-4 top-1/2 -translate-y-1/2 material-symbols-outlined text-outline text-[20px]">search</span>
+          <input type="text" value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} placeholder="Search by name, specialty, or condition..."
+            className="w-full pl-12 pr-4 py-3 rounded-xl border border-outline-variant dark:border-white/15 bg-surface-container-low dark:bg-[#414845] text-on-background dark:text-surface-container-lowest font-inter text-body-md placeholder:text-outline/50 focus:outline-none focus:ring-2 focus:ring-primary-container/40 focus:border-primary-container transition-all" />
+        </div>
+        <div className="flex flex-wrap gap-3">
+          {/* Specialty chips */}
+          <div className="flex flex-wrap gap-2">
+            {specialties.map((s) => (
+              <button key={s} onClick={() => setSpecialty(s)} className={`px-4 py-2 rounded-full font-inter text-body-sm transition-colors ${specialty === s ? 'bg-primary-container dark:bg-primary-fixed-dim text-on-primary dark:text-on-primary-fixed' : 'bg-surface-container dark:bg-[#414845] text-on-surface-variant dark:text-outline-variant hover:bg-surface-container-high dark:hover:bg-white/10'}`}>{s}</button>
+            ))}
           </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div>
-              <Label htmlFor="specialty">{t('specialty', 'Specialty')}</Label>
-              <Select value={specialty} onValueChange={setSpecialty}>
-                <SelectTrigger id="specialty">
-                  <SelectValue />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="All">{t('all', 'All')}</SelectItem>
-                  <SelectItem value="General Physician">{t('generalPhysician', 'General Physician')}</SelectItem>
-                  <SelectItem value="Cardiologist">{t('cardiologist', 'Cardiologist')}</SelectItem>
-                  <SelectItem value="Pediatrician">{t('pediatrician', 'Pediatrician')}</SelectItem>
-                  <SelectItem value="Dermatologist">{t('dermatologist', 'Dermatologist')}</SelectItem>
-                </SelectContent>
-              </Select>
-            </div>
-
-            <div>
-              <Label htmlFor="location">{t('location', 'Location')}</Label>
-              <Select value={location} onValueChange={setLocation}>
-                <SelectTrigger id="location">
-                  <SelectValue />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="Near Me">{t('nearMe', 'Near Me')}</SelectItem>
-                  <SelectItem value="Mumbai">{t('mumbai', 'Mumbai')}</SelectItem>
-                  <SelectItem value="Delhi">{t('delhi', 'Delhi')}</SelectItem>
-                  <SelectItem value="Kochi">{t('kochi', 'Kochi')}</SelectItem>
-                </SelectContent>
-              </Select>
-            </div>
+          <div className="ml-auto flex items-center gap-2">
+            <span className="material-symbols-outlined text-outline text-[18px]">location_on</span>
+            <select value={location} onChange={(e) => setLocation(e.target.value)} className="bg-transparent font-inter text-body-sm text-on-surface-variant dark:text-outline-variant border-none focus:outline-none cursor-pointer">
+              {locations.map((l) => <option key={l} value={l}>{l}</option>)}
+            </select>
           </div>
-        </CardContent>
-      </Card>
+        </div>
+      </div>
 
-      {/* Results */}
-      <div className="space-y-4">
-        {results.length > 0 ? (
-          results.map((doctor) => (
-            <Card key={doctor.id} className="hover:shadow-lg transition-shadow">
-              <CardContent className="p-6">
-                <div className="flex flex-col sm:flex-row items-start sm:items-center space-y-4 sm:space-y-0 sm:space-x-4">
-                  <Avatar className="h-20 w-20">
-                    <AvatarFallback className={doctor.type === 'doctor' ? 'bg-blue-100 text-blue-600' : 'bg-purple-100 text-purple-600'}>
-                      {doctor.name.charAt(0)}
-                    </AvatarFallback>
-                  </Avatar>
-
-                  <div className="flex-grow">
-                    <p className="font-bold text-lg text-gray-800">{doctor.name}</p>
-                    <p className="text-sm text-blue-600 font-medium">{doctor.specialty}</p>
-                    <div className="mt-1">
-                      <StarRating rating={doctor.rating} />
-                    </div>
-                  </div>
-
-                  <div className="flex flex-col items-start sm:items-end w-full sm:w-auto space-y-2">
-                    <div className="flex items-center text-sm text-gray-600">
-                      <MapPin className="h-4 w-4 mr-1" />
-                      {doctor.distance}
-                    </div>
-                    <Button
-                      onClick={() => router.push(`/patient/dashboard/doctors/${doctor.id}`)}
-                      className="w-full sm:w-auto"
-                    >
-                      {t('viewProfile', 'View Profile')}
-                    </Button>
-                  </div>
+      {/* Results Grid */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        {results.length > 0 ? results.map((doctor) => (
+          <div key={doctor.id} className="bg-surface-container-lowest dark:bg-inverse-surface rounded-xl border border-outline-variant/20 dark:border-white/10 shadow-[0_4px_12px_rgba(52,92,79,0.05)] overflow-hidden hover:-translate-y-1 transition-transform group">
+            {/* Doctor Image */}
+            <div className="relative h-48 bg-surface-container dark:bg-[#414845] overflow-hidden">
+              {DOCTOR_IMAGES[doctor.name] ? (
+                <Image src={DOCTOR_IMAGES[doctor.name]} alt={doctor.name} fill className="object-cover group-hover:scale-105 transition-transform duration-500" />
+              ) : (
+                <div className="w-full h-full flex items-center justify-center">
+                  <span className="material-symbols-outlined text-[64px] text-outline/20">person</span>
                 </div>
-              </CardContent>
-            </Card>
-          ))
-        ) : (
-          <Card>
-            <CardContent className="py-10 text-center">
-              <p className="text-gray-500">{t('noDoctorsFound', 'No doctors found')}</p>
-            </CardContent>
-          </Card>
+              )}
+              <div className="absolute top-3 right-3 bg-surface-container-lowest/90 dark:bg-inverse-surface/90 backdrop-blur-sm px-2 py-1 rounded-full flex items-center gap-1">
+                <span className="material-symbols-outlined icon-fill text-warm-gold text-[14px]">star</span>
+                <span className="font-inter text-body-sm font-medium text-on-background dark:text-surface-container-lowest">{doctor.rating.toFixed(1)}</span>
+              </div>
+            </div>
+            {/* Doctor Info */}
+            <div className="p-5">
+              <h3 className="font-newsreader text-lg font-semibold text-on-background dark:text-surface-container-lowest mb-1">{doctor.name}</h3>
+              <p className="font-inter text-body-sm text-primary-container dark:text-primary-fixed-dim font-medium mb-2">{doctor.specialty}</p>
+              <div className="flex items-center gap-1 text-outline dark:text-outline-variant mb-4">
+                <span className="material-symbols-outlined text-[16px]">location_on</span>
+                <span className="font-inter text-body-sm">{doctor.distance}</span>
+              </div>
+              <button onClick={() => router.push(`/patient/dashboard/doctors/${doctor.id}`)} className="w-full bg-primary-container/10 dark:bg-primary-fixed/10 text-primary-container dark:text-on-primary-container py-2.5 rounded-lg font-button text-button hover:bg-primary-container hover:text-on-primary dark:hover:bg-primary-fixed-dim dark:hover:text-on-primary-fixed transition-colors active:scale-[0.98]">
+                Book Appointment
+              </button>
+            </div>
+          </div>
+        )) : (
+          <div className="col-span-full bg-surface-container-lowest dark:bg-inverse-surface rounded-xl p-12 text-center border border-outline-variant/20 dark:border-white/10">
+            <span className="material-symbols-outlined text-[48px] text-outline/30 mb-4 block">person_search</span>
+            <p className="font-inter text-body-md text-on-surface-variant">{t('noDoctorsFound', 'No doctors found matching your criteria')}</p>
+          </div>
         )}
       </div>
-    </div>
+    </DashboardLayout>
   );
 }

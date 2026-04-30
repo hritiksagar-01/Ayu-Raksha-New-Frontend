@@ -1,7 +1,7 @@
 // src/components/features/FeatureCard.tsx
 'use client';
 
-import { cn } from '@/lib/className';
+import Image from 'next/image';
 import type { FeatureConfig } from '@/constants/features';
 import type { Translations } from '@/types';
 
@@ -11,39 +11,50 @@ interface FeatureCardProps {
   selectedLanguage: string;
 }
 
-export default function FeatureCard({ 
-  feature, 
-  translations, 
-  selectedLanguage 
+const FEATURE_ICONS: Record<string, { icon: string; color: string; bgColor: string }> = {
+  secureFeatureTitle: {
+    icon: 'smart_toy',
+    color: 'text-primary-container dark:text-primary-fixed-dim',
+    bgColor: 'bg-primary-container/10 dark:bg-primary-fixed/10',
+  },
+  fastFeatureTitle: {
+    icon: 'description',
+    color: 'text-warm-gold',
+    bgColor: 'bg-warm-gold/10',
+  },
+  comprehensiveFeatureTitle: {
+    icon: 'globe',
+    color: 'text-secondary dark:text-secondary-fixed-dim',
+    bgColor: 'bg-secondary/10 dark:bg-secondary-fixed/10',
+  },
+};
+
+export default function FeatureCard({
+  feature,
+  translations,
+  selectedLanguage,
 }: FeatureCardProps) {
-  // Debug: Check if translations exist
   const title = translations[feature.titleKey]?.[selectedLanguage];
   const description = translations[feature.descriptionKey]?.[selectedLanguage];
-
-  console.log('Feature Card Debug:', {
-    titleKey: feature.titleKey,
-    descriptionKey: feature.descriptionKey,
-    title,
-    description,
-    selectedLanguage,
-  });
+  const iconConfig = FEATURE_ICONS[feature.titleKey] || {
+    icon: 'star',
+    color: 'text-primary-container',
+    bgColor: 'bg-primary-container/10',
+  };
 
   return (
-    <div className="flex flex-col items-center">
-      {/* Emoji */}
-      <div className={cn('text-3xl font-bold mb-2', feature.color)}>
-        {feature.emoji}
+    <div className="flex gap-3 items-start">
+      <div className={`${iconConfig.bgColor} p-2 rounded-lg ${iconConfig.color} mt-1 shrink-0`}>
+        <span className="material-symbols-outlined">{iconConfig.icon}</span>
       </div>
-      
-      {/* Title */}
-      <h3 className="font-semibold text-lg mb-2 text-gray-900">
-        {title || 'Title Missing'}
-      </h3>
-      
-      {/* Description */}
-      <p className="text-gray-600 text-sm text-center">
-        {description || 'Description Missing'}
-      </p>
+      <div>
+        <h4 className="font-button text-button text-on-background dark:text-surface-container-lowest mb-1">
+          {title || 'Feature'}
+        </h4>
+        <p className="font-inter text-body-sm text-on-surface-variant dark:text-outline-variant">
+          {description || 'Description'}
+        </p>
+      </div>
     </div>
   );
 }

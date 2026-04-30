@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Ayu-Raksha Healthcare Portal</title>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Newsreader:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-tertiary": "#ffffff",
+                        "inverse-surface": "#2f312f",
+                        "secondary-fixed": "#efe0cd",
+                        "surface-variant": "#e2e3e0",
+                        "surface-container-low": "#f3f4f1",
+                        "on-background": "#1a1c1b",
+                        "surface-container-high": "#e8e8e6",
+                        "inverse-primary": "#a5d0bf",
+                        "on-secondary": "#ffffff",
+                        "error-container": "#ffdad6",
+                        "background": "#f9f9f7",
+                        "on-tertiary-fixed": "#32120e",
+                        "on-primary-fixed": "#002118",
+                        "on-surface": "#1a1c1b",
+                        "error": "#ba1a1a",
+                        "surface-dim": "#dadad8",
+                        "surface-container-highest": "#e2e3e0",
+                        "primary": "#1c4438",
+                        "on-error": "#ffffff",
+                        "secondary": "#675d4e",
+                        "on-error-container": "#93000a",
+                        "on-secondary-container": "#6d6354",
+                        "on-surface-variant": "#414845",
+                        "surface": "#f9f9f7",
+                        "tertiary-fixed": "#ffdad5",
+                        "on-primary-container": "#a7d3c2",
+                        "outline-variant": "#c0c8c3",
+                        "on-secondary-fixed-variant": "#4f4538",
+                        "surface-container-lowest": "#ffffff",
+                        "on-secondary-fixed": "#221a0f",
+                        "surface-container": "#eeeeec",
+                        "secondary-container": "#efe0cd",
+                        "tertiary-fixed-dim": "#f3b8b0",
+                        "on-tertiary-container": "#f6bbb3",
+                        "primary-fixed": "#c0ecdb",
+                        "surface-tint": "#3e6659",
+                        "tertiary-container": "#754943",
+                        "primary-fixed-dim": "#a5d0bf",
+                        "surface-bright": "#f9f9f7",
+                        "primary-container": "#345c4f",
+                        "inverse-on-surface": "#f0f1ee",
+                        "outline": "#717975",
+                        "on-primary-fixed-variant": "#264e42",
+                        "on-tertiary-fixed-variant": "#653c36",
+                        "on-primary": "#ffffff",
+                        "tertiary": "#5a332d",
+                        "secondary-fixed-dim": "#d2c4b2"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "xl": "24px",
+                        "xs": "4px",
+                        "4xl": "64px",
+                        "5xl": "96px",
+                        "lg": "16px",
+                        "3xl": "48px",
+                        "2xl": "32px",
+                        "base": "4px",
+                        "md": "12px",
+                        "sm": "8px"
+                    },
+                    "fontFamily": {
+                        "h2": ["Newsreader"],
+                        "label-bold": ["Inter"],
+                        "button": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "h3": ["Newsreader"],
+                        "h1": ["Newsreader"],
+                        "body-lg": ["Inter"],
+                        "body-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "h2": ["36px", { "lineHeight": "1.3", "fontWeight": "600" }],
+                        "label-bold": ["12px", { "lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "button": ["16px", { "lineHeight": "1", "letterSpacing": "0.02em", "fontWeight": "500" }],
+                        "body-sm": ["14px", { "lineHeight": "1.5", "fontWeight": "400" }],
+                        "h3": ["28px", { "lineHeight": "1.4", "fontWeight": "500" }],
+                        "h1": ["48px", { "lineHeight": "1.2", "fontWeight": "600" }],
+                        "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "body-md": ["16px", { "lineHeight": "1.5", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-background text-on-background font-body-md antialiased min-h-screen flex flex-col">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 border-b border-[#E5E7EB] dark:border-slate-800 shadow-sm dark:shadow-none bg-[#FAFAFA]/90 backdrop-blur-md dark:bg-slate-950/90 font-newsreader text-base font-medium">
+<div class="flex justify-between items-center h-16 px-6 max-w-[1280px] mx-auto">
+<!-- Brand -->
+<div class="text-2xl font-bold tracking-tight text-[#345C4F] dark:text-[#FFFFFF] flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">local_hospital</span>
+                Ayu-Raksha
+            </div>
+<!-- Navigation Links (Web) -->
+<div class="hidden md:flex items-center gap-8">
+<a class="text-[#345C4F] dark:text-[#FFFFFF] border-b-2 border-[#345C4F] pb-1" href="#">Services</a>
+<a class="text-slate-500 dark:text-slate-400 hover:text-[#345C4F] transition-colors duration-200" href="#">Portals</a>
+<a class="text-slate-500 dark:text-slate-400 hover:text-[#345C4F] transition-colors duration-200" href="#">About</a>
+<a class="text-slate-500 dark:text-slate-400 hover:text-[#345C4F] transition-colors duration-200" href="#">Support</a>
+</div>
+<!-- Actions -->
+<div class="flex items-center gap-4">
+<!-- Language Selector -->
+<div class="hidden sm:flex items-center gap-1 text-[#345C4F] cursor-pointer hover:bg-slate-50 p-2 rounded-lg transition-colors">
+<span class="material-symbols-outlined">language</span>
+<span class="font-button text-button">EN</span>
+<span class="material-symbols-outlined text-[20px]">expand_more</span>
+</div>
+<button class="text-slate-500 hover:bg-slate-50 p-2 rounded-full transition-colors hidden sm:block">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="bg-[#345C4F] text-white px-6 py-2 rounded-lg font-button text-button hover:bg-[#264e42] transition-colors duration-200 active:scale-95 shadow-[0_4px_12px_rgba(52,92,79,0.15)]">
+                    Login
+                </button>
+</div>
+</div>
+</nav>
+<!-- Main Content Canvas -->
+<main class="flex-grow pt-[80px]">
+<!-- Hero Section -->
+<section class="relative pt-4xl pb-5xl px-6 max-w-[1280px] mx-auto flex flex-col md:flex-row items-center gap-3xl">
+<div class="w-full md:w-1/2 flex flex-col items-start z-10">
+<span class="text-primary font-label-bold text-label-bold uppercase tracking-wider mb-lg bg-primary-container/10 px-3 py-1 rounded-full text-primary-container">Trusted Healthcare Ecosystem</span>
+<h1 class="font-h1 text-h1 text-on-background mb-xl text-balance">
+                    Bridging Trust Between <span class="text-primary-container">Patients</span> &amp; <span class="text-[#D4A574]">Healers</span>.
+                </h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant mb-2xl max-w-lg">
+                    Ayu-Raksha provides a seamless, holistic platform managing your health records, connecting you with elite practitioners, and empowering your wellness journey globally.
+                </p>
+<div class="flex flex-col sm:flex-row gap-lg w-full sm:w-auto">
+<button class="bg-primary-container text-on-primary px-8 py-3 rounded-lg font-button text-button hover:bg-on-primary-fixed-variant transition-colors shadow-[0_4px_12px_rgba(52,92,79,0.2)] active:scale-[0.98]">
+                        Book Appointment
+                    </button>
+<button class="bg-surface text-primary-container border border-primary-container/20 px-8 py-3 rounded-lg font-button text-button hover:bg-surface-container transition-colors active:scale-[0.98]">
+                        Join as Doctor
+                    </button>
+</div>
+</div>
+<div class="w-full md:w-1/2 relative">
+<!-- Abstract Hero Graphic - Deep Forest Green and Warm Tones -->
+<div class="relative w-full aspect-square md:aspect-[4/3] rounded-2xl overflow-hidden shadow-[0_8px_32px_rgba(52,92,79,0.1)] bg-surface-container-highest">
+<img alt="Hero Image" class="w-full h-full object-cover" data-alt="A bright, modern healthcare clinic interior emphasizing holistic wellness. The scene features warm, natural sunlight filtering through large windows onto clean, minimalist surfaces. Soft organic shapes, natural wood textures, and deep forest green plant accents contrast with crisp white clinical equipment. The overall aesthetic is professional, calming, and highly trustworthy, embodying a premium medical sanctuary." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDtYimIEogMR6PddQBpyI4PDByr2ZRPweRMQ7g4QUsAS-j9zu-UvvV7IaWg_IR4Amp1EO8a0Ls2gDEvG-Y4KPq6PfFcLEnB_J-s90SzUHMPL1FPpd3SGJRc8fa-QOfCPRvvprBdy6mWFTG4Q2-9bjjH3TrmWVM1BlysYITx6tl5gJAPKPLqCk7rx-8HZhxgMXn_xpQPW_2NG-kNuiw3zmhzgHZTDf97x-6RU1wPaGqApJd-09XL-Rk4g0CPZAD3RWNTfEjs7u_bNw"/>
+</div>
+<!-- Decorative Elements -->
+<div class="absolute -bottom-6 -left-6 bg-surface p-xl rounded-xl shadow-[0_8px_24px_rgba(0,0,0,0.08)] flex items-center gap-md border border-outline-variant/30">
+<div class="bg-[#D4A574]/20 p-sm rounded-full">
+<span class="material-symbols-outlined text-[#D4A574]">verified_user</span>
+</div>
+<div>
+<p class="font-label-bold text-label-bold text-on-surface">HIPAA Compliant</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Secure Records</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Portal Selection (Bento Grid) -->
+<section class="py-5xl px-6 bg-surface-container-low">
+<div class="max-w-[1280px] mx-auto">
+<div class="text-center mb-4xl">
+<h2 class="font-h2 text-h2 text-on-background mb-sm">Choose Your Portal</h2>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-2xl mx-auto">Select your specialized dashboard to access personalized tools, records, and AI-assisted insights tailored for your role.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-xl">
+<!-- Patient Portal Card -->
+<div class="bg-surface rounded-xl p-2xl shadow-[0_4px_12px_rgba(52,92,79,0.05)] hover:-translate-y-1 transition-transform duration-300 border border-outline-variant/20 flex flex-col h-full group relative overflow-hidden">
+<div class="absolute top-0 right-0 w-32 h-32 bg-primary-container/5 rounded-bl-[100px] -z-0 transition-transform group-hover:scale-110"></div>
+<div class="bg-primary-container/10 w-16 h-16 rounded-xl flex items-center justify-center mb-lg relative z-10 text-primary-container">
+<span class="material-symbols-outlined text-[32px]">diversity_1</span>
+</div>
+<h3 class="font-h3 text-h3 text-on-background mb-md relative z-10">Patient Portal</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-xl flex-grow relative z-10">Access your complete medical history, book appointments, and interact with our AI Health Assistant for preliminary guidance.</p>
+<button class="w-full bg-surface text-primary-container border border-primary-container/30 px-4 py-3 rounded-lg font-button text-button hover:bg-primary-container hover:text-on-primary transition-colors flex items-center justify-center gap-sm relative z-10">
+                            Enter Portal
+                            <span class="material-symbols-outlined text-[20px]">arrow_forward</span>
+</button>
+</div>
+<!-- Doctor Portal Card -->
+<div class="bg-primary-container text-on-primary rounded-xl p-2xl shadow-[0_8px_24px_rgba(52,92,79,0.15)] hover:-translate-y-1 transition-transform duration-300 flex flex-col h-full relative overflow-hidden group">
+<div class="absolute -right-10 -top-10 w-48 h-48 bg-[#D4A574]/10 rounded-full blur-2xl z-0 group-hover:bg-[#D4A574]/20 transition-colors"></div>
+<div class="bg-[#D4A574]/20 w-16 h-16 rounded-xl flex items-center justify-center mb-lg relative z-10 text-[#D4A574]">
+<span class="material-symbols-outlined text-[32px]">stethoscope</span>
+</div>
+<h3 class="font-h3 text-h3 text-on-primary mb-md relative z-10">Doctor Portal</h3>
+<p class="font-body-sm text-body-sm text-on-primary/80 mb-xl flex-grow relative z-10">Manage patient queues, review medical imaging with AI enhancements, and provide tele-consultations securely.</p>
+<button class="w-full bg-[#D4A574] text-on-primary-fixed px-4 py-3 rounded-lg font-button text-button hover:bg-[#c29668] transition-colors flex items-center justify-center gap-sm relative z-10">
+                            Enter Portal
+                            <span class="material-symbols-outlined text-[20px]">arrow_forward</span>
+</button>
+</div>
+<!-- Uploader Portal Card -->
+<div class="bg-surface rounded-xl p-2xl shadow-[0_4px_12px_rgba(52,92,79,0.05)] hover:-translate-y-1 transition-transform duration-300 border border-outline-variant/20 flex flex-col h-full group relative overflow-hidden">
+<div class="absolute top-0 right-0 w-32 h-32 bg-secondary/5 rounded-bl-[100px] -z-0 transition-transform group-hover:scale-110"></div>
+<div class="bg-secondary/10 w-16 h-16 rounded-xl flex items-center justify-center mb-lg relative z-10 text-secondary">
+<span class="material-symbols-outlined text-[32px]">upload_file</span>
+</div>
+<h3 class="font-h3 text-h3 text-on-background mb-md relative z-10">Uploader Portal</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-xl flex-grow relative z-10">Securely digitize and upload diagnostic reports, X-rays, and medical documents to patient profiles.</p>
+<button class="w-full bg-surface text-secondary border border-secondary/30 px-4 py-3 rounded-lg font-button text-button hover:bg-secondary hover:text-on-secondary transition-colors flex items-center justify-center gap-sm relative z-10">
+                            Enter Portal
+                            <span class="material-symbols-outlined text-[20px]">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Features Section (Asymmetric Layout) -->
+<section class="py-5xl px-6 max-w-[1280px] mx-auto">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-2xl items-center">
+<div class="lg:col-span-5 flex flex-col gap-xl">
+<h2 class="font-h2 text-h2 text-on-background">Empowering Health with Innovation</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">We combine traditional care values with cutting-edge technology to provide a comprehensive healthcare experience.</p>
+<div class="flex flex-col gap-lg mt-sm">
+<div class="flex gap-md items-start">
+<div class="bg-primary-container/10 p-sm rounded-lg text-primary-container mt-1">
+<span class="material-symbols-outlined">smart_toy</span>
+</div>
+<div>
+<h4 class="font-button text-button text-on-background mb-xs">AI Health Assistant</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">24/7 symptom checking and preliminary health routing.</p>
+</div>
+</div>
+<div class="flex gap-md items-start">
+<div class="bg-[#D4A574]/10 p-sm rounded-lg text-[#D4A574] mt-1">
+<span class="material-symbols-outlined">description</span>
+</div>
+<div>
+<h4 class="font-button text-button text-on-background mb-xs">Instant Reports</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Digitized medical records available securely on demand.</p>
+</div>
+</div>
+<div class="flex gap-md items-start">
+<div class="bg-secondary/10 p-sm rounded-lg text-secondary mt-1">
+<span class="material-symbols-outlined">globe</span>
+</div>
+<div>
+<h4 class="font-button text-button text-on-background mb-xs">Global Doctor Network</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Connect with specialists across borders seamlessly.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="lg:col-span-7 grid grid-cols-2 gap-md h-[500px]">
+<div class="bg-surface-container rounded-xl overflow-hidden relative shadow-[0_4px_12px_rgba(52,92,79,0.05)]">
+<img alt="Doctor consulting" class="w-full h-full object-cover" data-alt="A focused, professional healthcare specialist in a modern, well-lit clinic reviewing digital patient records on a high-tech tablet. The scene is illuminated by soft, natural light, highlighting the crisp white coat and the deep green background elements. The mood is serious, competent, and reassuring, conveying high-end medical expertise." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBMWlDEybkUKfiVr0Ca0Q1wFwnO4zQ7amaj9h5CNK-M0ZgzdIU9VPDNTyjGZ9L2idKJPhhxS8xZhI2PrB7C8c2zxctorWUTiO3XqpRuOWpj-RPQPXTznFdQYh2piq_nwqURJp2B4pFN000vqJkh22c5qZ5EQttiagVls6azw5UNhXB77uRtoc-GmlBdNRbGic_VjGo-Wzw3kKWBTmY10ewjKCipDdwrh40L3aRCbALCX9lsfpcK4UZ0hCcC0U6RxZLjSfuGy05OaQ"/>
+</div>
+<div class="flex flex-col gap-md">
+<div class="bg-primary-container/5 rounded-xl flex-grow overflow-hidden relative shadow-[0_4px_12px_rgba(52,92,79,0.05)] p-xl flex flex-col justify-end border border-primary-container/10">
+<span class="material-symbols-outlined text-[48px] text-primary-container/20 absolute top-xl right-xl">bar_chart</span>
+<h4 class="font-h3 text-h3 text-primary-container mb-xs">99.9%</h4>
+<p class="font-body-sm text-body-sm text-primary-fixed-variant">System Uptime &amp; Reliability</p>
+</div>
+<div class="bg-surface rounded-xl flex-grow overflow-hidden relative shadow-[0_4px_12px_rgba(52,92,79,0.05)] border border-outline-variant/20 p-xl">
+<img alt="Data Analysis" class="absolute inset-0 w-full h-full object-cover opacity-20" data-alt="Abstract visualization of secure digital health data flowing across a network. Minimalist lines and nodes in pale gold and deep forest green on a bright white background. The image feels clean, modern, and highly secure, representing instantaneous data transfer in a medical context." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAsZfugowLAXCHpTBb4LKV3BH6w4Iarx8_LFyzUyH0F85BRSSPWHllIhfpfeFgvwsSZFvIcI6k_nr1w5niyrqyHxUxdiU1LaRLRTgQh60NxvTjLkyWZ-wHoTwJbWJ9Eya1pRXXSRVqWO6kkpAXEQsASlhSic_ycINh9w4DX1Q6cF4tx4oPYuJ7kbVveeIEeq4vkAJPIvB2Qlr95yy7Ek2OHMGopgJRtomfcKMaGnams5jC18DFa5UVgwDlCBaXQZwYlHQeNLtR3bg"/>
+<div class="relative z-10 flex flex-col h-full justify-end">
+<h4 class="font-button text-button text-on-background mb-xs">Secure Data</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">End-to-end encryption for all records.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full border-t py-12 mt-auto border-t border-[#E5E7EB] dark:border-slate-800 bg-[#FAFAFA] dark:bg-slate-950 font-inter text-xs tracking-wide text-[#345C4F] dark:text-[#4A8271]">
+<div class="max-w-[1280px] mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6">
+<!-- Brand & Copyright -->
+<div class="flex flex-col items-center md:items-start gap-2">
+<div class="font-newsreader font-bold text-[#345C4F] text-lg flex items-center gap-1">
+<span class="material-symbols-outlined text-base">local_hospital</span>
+                    Ayu-Raksha
+                </div>
+<p class="text-slate-500 dark:text-slate-400">© 2024 Ayu-Raksha Healthcare. All rights reserved.</p>
+</div>
+<!-- Links -->
+<div class="flex flex-wrap justify-center gap-6">
+<a class="text-slate-500 dark:text-slate-400 hover:underline hover:text-[#345C4F] dark:hover:text-white transition-colors opacity-80 hover:opacity-100" href="#">Privacy Policy</a>
+<a class="text-slate-500 dark:text-slate-400 hover:underline hover:text-[#345C4F] dark:hover:text-white transition-colors opacity-80 hover:opacity-100" href="#">Terms of Service</a>
+<a class="text-slate-500 dark:text-slate-400 hover:underline hover:text-[#345C4F] dark:hover:text-white transition-colors opacity-80 hover:opacity-100" href="#">HIPAA Compliance</a>
+<a class="text-slate-500 dark:text-slate-400 hover:underline hover:text-[#345C4F] dark:hover:text-white transition-colors opacity-80 hover:opacity-100" href="#">Contact Us</a>
+</div>
+</div>
+</footer>
+</body></html>
